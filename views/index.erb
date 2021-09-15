@@ -32,7 +32,7 @@
         <% end %>
 
         <div class="posted-by-container">
-            <h4>Posted by <%= current_user["username"]%></h4>
+            <h4>Posted by <%= find_user_by_id(post["user_id"])["username"] %></h4>
             <h4> <%= find_post_by_id(post["id"])["created_at"] %> </h4>
         </div>
 

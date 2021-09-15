@@ -43,7 +43,8 @@ post '/sign_up' do
   
   redirect '/' if logged_in?
 
-  create_user(params["username"], params["email"], encrypt_password("#{params['password_digest']}")) 
+  user = create_user(params["username"], params["email"], encrypt_password("#{params['password_digest']}"))
+  
 
   session[:user_id] = user['id']
 

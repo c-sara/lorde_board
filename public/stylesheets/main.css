@@ -23,3 +23,20 @@ body {
     width: 100%;
     padding: 20px 30px;
 }
+
+form { 
+    display: table; 
+    margin: 0;   
+}
+
+p { 
+    display: table-row;  
+}
+
+label { 
+    display: table-cell; 
+}
+
+input { 
+    display: table-cell; 
+}

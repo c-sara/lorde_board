@@ -17,6 +17,8 @@ end
 
 def current_user
 
+  p session[:user_id]
+
     user = find_user_by_id(session[:user_id])
 
     return user #return has with keys

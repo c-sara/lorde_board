@@ -47,6 +47,8 @@ end
 def find_user_by_id(id)
     db = PG.connect(dbname: 'lorde_forum')
 
+    p id
+
     sql = "SELECT * FROM users WHERE id = #{id};"
 
     result = db.exec(sql)
