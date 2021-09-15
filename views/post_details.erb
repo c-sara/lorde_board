@@ -13,18 +13,57 @@
 <% if edit_video_link(post['video_url']) != "" %>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= edit_video_link(post['video_url']) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <% end %>
+<br>
+Posted by <%= find_user_by_id(post["user_id"])["username"] %> at <%= post['created_at'] %>
 
-<%# Posted by <%= find_user_by_id(post['user_id'])['email'] %> %>
-
-<p> <%= post['image_url'] %> </p>
-
-<p> <%= post['video_url'] %> </p>
+<% if post['user_id'] == current_user['id'] %>
     
-<form action="/posts/<%= post["id"] %>" method="post">
-    <input type="hidden" name="_method" value="delete">
+    <form action="/posts/<%= post["id"] %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        
+        <button>Delete</button>
+    </form>
+
+
+    <a href="/posts/<%= post['id'] %>/edit">Edit</a>
+
+<% end %>
+
+<%# comment section %>
+
+<br>
+
+Comments:
+
+<% comments.each do |comment| %>
+
+    <% if post["id"] == comment["post_id"] %>
+
+        <h5> <%= find_user_by_id(comment["user_id"])["username"] %>  </h5>
+        <h5> <%= comment["comment"] %> </h5>
+
+    <% end %>
+
+    <% if comment['user_id'] == current_user['id'] %>
     
-    <button>Delete</button>
+        <form action="/comments/<%= comment["id"] %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            
+            <button>Delete</button>
+        </form>
+
+        <a href="/comments/<%= comment['id'] %>/edit">Edit</a>
+
+    <% end %>
+
+<% end %>
+
+<form action="/comments/<%= post["id"] %>" method="post">
+    <p> 
+        <input type="text" name="comment">
+        <button>Comment</button>
+    </p>
+    
 </form>
 
 
-<a href="/posts/<%= post['id'] %>/edit">Edit</a>

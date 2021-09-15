@@ -1,27 +1,27 @@
 def run_sql(sql)
-    db = PG.connect(dbname: 'lorde_forum')
-    results = db.exec(sql)
-    db.close
-    return results
+  db = PG.connect(dbname: 'lorde_forum')
+  results = db.exec(sql)
+  db.close
+  return results
 end
 
 def logged_in?
 
-    if session[:user_id]
-      return true
-    else
-      return false
-    end
+  if session[:user_id]
+    return true
+  else
+    return false
+  end
   
 end
 
 def current_user
 
-  p session[:user_id]
+  session[:user_id]
 
-    user = find_user_by_id(session[:user_id])
+  user = find_user_by_id(session[:user_id])
 
-    return user #return has with keys
+  return user #return has with keys
     # if user
     #   return user
     # else

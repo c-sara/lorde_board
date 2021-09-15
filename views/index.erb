@@ -1,8 +1,8 @@
-<%# <% if logged_in? %> %>
+<% if logged_in? %>
     <a href="/posts/new">New Post</a>
-<%# <% end %> %>
+<% end %>
 
-<% posts.each do |post| %>
+<% posts.reverse_each do |post| %>
 
     <div class="individual-post-container">
     
@@ -19,9 +19,6 @@
         <br>
 
         <img src="<%= post['image_url'] %>" alt="">
-
-
-        <p><%= edit_video_link(post['video_url']) %></p>
 
         <% if edit_video_link(post['video_url']) != "" %>
 
