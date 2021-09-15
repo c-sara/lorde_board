@@ -1,3 +1,25 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Architects Daughter', cursive;
+}
+
 body {
     background-color: blanchedalmond;
+}
+
+.page-wrapper {
+    width: 75%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.individual-post-container {
+    border:black solid 2px;
+    background-color: cadetblue;
+    margin: 10px 0;
+}
+
+.individual-post-container img {
+    width: 100%;
+    padding: 20px 30px;
 }

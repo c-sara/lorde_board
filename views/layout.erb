@@ -5,19 +5,48 @@
   <title>The Lorde Board</title>
   <link rel='stylesheet' href='/stylesheets/main.css'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <h1>
-    <a href="/">The Lorde Board</a> 
-  </h1>
+  <div class="page-wrapper">
+  
+    <h1>
+      <a href="/">The Lorde Board</a> 
+    </h1>
 
-  <a href="/">Home</a>
-  <a href="/about">About</a>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/links">Find Lorde</a>
+
+    <form action="/login">
+      <button>Login</button>
+    </form> 
+    <%# remove above later %>
+
+    <form action="/session" method="post">
+
+      <input type="hidden" name="_method" value="delete">
+
+      <button>Logout</button>
+
+    </form>
 
 
+    <% if logged_in? %>
 
-  <%= yield %>
+    Logged in as <%= current_user["username"] %>
+
+    <% end %>
+
+    
+
+    <%= yield %>
+  
+  </div>
+
 
 </body>
 </html>

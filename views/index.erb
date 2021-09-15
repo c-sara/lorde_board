@@ -1,25 +1,42 @@
-<h1>hello world</h1>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/wvsP_lzh2-8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<%# <% if logged_in? %> %>
+    <a href="/posts/new">New Post</a>
+<%# <% end %> %>
 
 <% posts.each do |post| %>
 
-    <h2>
-        <a href="/dishes/<%= post["id"] %>">
-            <%= post["title"] %>
-        </a>
-    </h2>
+    <div class="individual-post-container">
+    
+        <h2>
+            <a href="/posts/<%= post["id"] %>">
+                <%= post["title"] %>
+            </a>
+        </h2>
 
-    <br>
+        <br>
 
-    <h5> <%= post['post_text'] %> </h5>
+        <h5> <%= post['post_text'] %> </h5>
 
-    <br>
+        <br>
 
-    <img src="<%= post['image_url'] %>" alt="">
+        <img src="<%= post['image_url'] %>" alt="">
 
-    <br>
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/wvsP_lzh2-8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p><%= edit_video_link(post['video_url']) %></p>
+
+        <% if edit_video_link(post['video_url']) != "" %>
+
+            <div align="middle">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= edit_video_link(post['video_url']) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div> 
+
+        <% end %>
+
+        <div class="posted-by-container">
+            <h4>Posted by <%= current_user["username"]%></h4>
+            <h4> <%= find_post_by_id(post["id"])["created_at"] %> </h4>
+        </div>
+
+    </div>
+    
 
 <% end %>

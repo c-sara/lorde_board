@@ -1,0 +1,30 @@
+<h1>Post details</h1>
+
+<%= post['title'] %>
+
+<h5> <%= post['post_text'] %> </h5>
+
+<br>
+
+<img src="<%= post['image_url'] %>" alt="">
+
+<br>
+
+<% if edit_video_link(post['video_url']) != "" %>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= edit_video_link(post['video_url']) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<% end %>
+
+<%# Posted by <%= find_user_by_id(post['user_id'])['email'] %> %>
+
+<p> <%= post['image_url'] %> </p>
+
+<p> <%= post['video_url'] %> </p>
+    
+<form action="/posts/<%= post["id"] %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    
+    <button>Delete</button>
+</form>
+
+
+<a href="/posts/<%= post['id'] %>/edit">Edit</a>
