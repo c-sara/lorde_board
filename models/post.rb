@@ -1,5 +1,5 @@
 require 'pg'
-require 'pry'
+require 'pry' if development?
 
 def find_all_posts()
     
