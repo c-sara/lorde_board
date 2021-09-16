@@ -1,8 +1,8 @@
 require 'pg'
 
-def create_user(username, email, password_digest)
+def create_user(username, email, password_digest, avatar_url)
 
-    sql = "INSERT INTO users (username, email, password_digest) VALUES ('#{username}', '#{email}', '#{password_digest}') returning *;"
+    sql = "INSERT INTO users (username, email, password_digest, avatar_url) VALUES ('#{username}', '#{email}', '#{password_digest}', '#{avatar_url}') returning *;"
 
     new_user = run_sql(sql)
 
@@ -30,22 +30,8 @@ def find_user_by_email(email)
     
 end
 
-# def find_user_by_username(username)
-
-#     sql = "SELECT * FROM users WHERE username = '#{username}';"
-
-#     result = run_sql(sql)
-
-#     if result.count > 0
-#         return result[0]
-#     else
-#         return false
-#     end
-    
-# end
-
 def find_user_by_id(id)
-    db = PG.connect(dbname: 'lorde_forum')
+    db = PG.connect(ENV['DATABASE_URL'] || {dbname: 'lorde_forum'})
 
     p id
 

@@ -1,69 +1,85 @@
-<h1>Post details</h1>
+<div class="individual-post-container-detail">
 
-<%= post['title'] %>
+    <h2><%= post['title'] %></h2>
 
-<h5> <%= post['post_text'] %> </h5>
+    <% if post['image_url'] != "" %>
+    <h5> <%= post['post_text'] %> </h5>
+    <% end %>
 
-<br>
+    <br>
 
-<img src="<%= post['image_url'] %>" alt="">
+    <% if post['image_url'] != "" %>
+    <img src="<%= post['image_url'] %>" alt="">
+    <% end %>
 
-<br>
+    <br>
 
-<% if edit_video_link(post['video_url']) != "" %>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= edit_video_link(post['video_url']) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<% end %>
-<br>
-Posted by <%= find_user_by_id(post["user_id"])["username"] %> at <%= post['created_at'] %>
+    <% if edit_video_link(post['video_url']) != "" %>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= edit_video_link(post['video_url']) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <% end %>
+    <br>
+     <h4>Posted by <%= find_user_by_id(post["user_id"])["username"] %></h4>
+            <h4> 
+                <% time = Time.parse(find_post_by_id(post["id"])["created_at"]).strftime("%d %B %Y at %I:%M%P")%> 
+                <%= time %>
+            </h4>
+    <div class="button-container">
+        <% if post['user_id'] == current_user['id'] %>
 
-<% if post['user_id'] == current_user['id'] %>
-    
-    <form action="/posts/<%= post["id"] %>" method="post">
-        <input type="hidden" name="_method" value="delete">
-        
-        <button>Delete</button>
-    </form>
+            <form action="/posts/<%= post["id"] %>/edit" method="get">
+                
+                <button>Edit Post</button>
+            </form>
+            
+            <form action="/posts/<%= post["id"] %>" method="post">
+                <input type="hidden" name="_method" value="delete">
+                
+                <button>Delete Post</button>
+            </form>
 
+        <% end %>
+    </div>
 
-    <a href="/posts/<%= post['id'] %>/edit">Edit</a>
-
-<% end %>
+</div>
 
 <%# comment section %>
 
 <br>
 
-Comments:
+<div class="comment-container">
+    <div>Comments:</div> 
 
-<% comments.each do |comment| %>
+    <% comments.each do |comment| %>
 
-    <% if post["id"] == comment["post_id"] %>
+        <% if post["id"] == comment["post_id"] %>
 
-        <h5> <%= find_user_by_id(comment["user_id"])["username"] %>  </h5>
-        <h5> <%= comment["comment"] %> </h5>
+            <h5> <%= find_user_by_id(comment["user_id"])["username"] %>  </h5>
+            <h5> <%= comment["comment"] %> </h5>
+
+        <% end %>
+
+        <% if comment['user_id'] == current_user['id']  && post["id"] == comment["post_id"] %>
+        
+            <form action="/comments/<%= comment["id"] %>" method="post">
+                <input type="hidden" name="_method" value="delete">
+                
+                <button>Delete</button>
+            </form>
+
+            <a href="/comments/<%= comment['id'] %>/edit">Edit</a>
+
+        <% end %>
 
     <% end %>
 
-    <% if comment['user_id'] == current_user['id'] %>
-    
-        <form action="/comments/<%= comment["id"] %>" method="post">
-            <input type="hidden" name="_method" value="delete">
-            
-            <button>Delete</button>
-        </form>
+    <form action="/comments/<%= post["id"] %>" method="post">
+        <p> 
+            <input type="text" name="comment">
+            <button>Comment</button>
+        </p>
+        
+    </form>
+</div>
 
-        <a href="/comments/<%= comment['id'] %>/edit">Edit</a>
-
-    <% end %>
-
-<% end %>
-
-<form action="/comments/<%= post["id"] %>" method="post">
-    <p> 
-        <input type="text" name="comment">
-        <button>Comment</button>
-    </p>
-    
-</form>
 
 

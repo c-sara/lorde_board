@@ -1,21 +1,25 @@
-<form action="/posts/<%= post["id"] %>" method="post">
+<div class="content-container">
 
-    <input type="hidden" name="_method" value="put">
+    <form action="/posts/<%= post["id"] %>" method="post" class="edit-post-form">
 
-    <label for="">Title</label>
-    <input type="text" name="title" value="<%= post["title"] %>">
-    <br>
-    <label for="">Post</label>
-    <textarea cols="40" name="post_text" rows="5">
-        <%= post["post_text"] %>
-    </textarea>
-    <br>
-    <label for="">Image URL</label>
-    <input type="text" name="image_url" value="<%= post["image_url"] %>">
-    <br>
-    <label for="">Video URL</label>
-    <input type="text" name="video_url" value="<%= post["video_url"] %>">
-    <br>
-    <button>Update</button>
+        <input type="hidden" name="_method" value="put">
 
-</form>
+        <label for="">Title</label>
+        <input type="text" name="title" value="<%= post["title"] %>">
+        <br>
+        <label for="">Post</label>
+        <textarea cols="40" name="post_text" rows="5">
+            <%= post["post_text"] %>
+        </textarea>
+        <br>
+        <label for="">Image URL</label>
+        <input type="text" name="image_url" value="<%= post["image_url"] %>">
+        <br>
+        <label for="">Video URL</label>
+        <input type="text" name="video_url" value="<%= post["video_url"] %>">
+        <br>
+        <button>Update</button>
+
+    </form>
+
+</div>

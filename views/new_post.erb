@@ -1,32 +1,35 @@
-<form action="/posts" method="post">
-    <p>
-        <label for="">Title</label>
-        <input type="text" name="title">
-    </p>
-    
-    <br>
-    <p>
-        <label for="">Post</label>
-        <textarea cols="40" name="post_text" rows="5">
-        </textarea>
-    </p>
-    
-    <br>
-    <p>
-        <label for="">Image URL</label>
-        <input type="text" name="image_url">
-    </p>
-    
-    <br>
-    <p>
-        <label for="">Video URL</label>
-        <input type="text" name="video_url">
+<div class="content-container">
+
+    <form action="/posts" method="post" class="create-post-form">
+        <p>
+            <label for="">Title</label>
+            <input type="text" name="title">
+        </p>
         
-    </p>
-    <h4>Please click "Share" on YouTube and use the link</h4>
-    
-    <br>
+        <p>
+            <label for="">Post</label>
+            <textarea cols="40" name="post_text" rows="5">
+            </textarea>
+        </p>
+        
+        <p>
+            <label for="">Image URL</label>
+            <input type="text" name="image_url">
+        </p>
+        
+        <p>
+            <label for="">Video URL</label>
+            <input type="text" name="video_url">
+            
+        </p>
+        <%# <h4>Please click "Share" on YouTube and use the link</h4> %>
 
-    <button>Upload post</button>
+        <div class="upload-button">
+            
+            <button class="button">Upload post</button>
+        </div>
+        
 
-</form>
+    </form>
+
+</div>

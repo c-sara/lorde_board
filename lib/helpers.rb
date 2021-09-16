@@ -1,5 +1,5 @@
 def run_sql(sql)
-  db = PG.connect(dbname: 'lorde_forum')
+  db = PG.connect(ENV['DATABASE_URL'] || {dbname: 'lorde_forum'})
   results = db.exec(sql)
   db.close
   return results

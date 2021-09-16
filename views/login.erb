@@ -1,17 +1,25 @@
-<form action="/session" method="post">
-    <label for="">Email</label>
-    <input type="email" name="email">
-    <br>
-    <label for="">Password</label>
-    <input type="password" name="password_digest">
-    <br>
+<div class="log-in-container">
 
-    <button>Log in</button>
+    <form action="/session" method="post" class="login-page">
+        <div class="login-details">
+            <label for="">Email</label class="login-page">
+            <input type="email" name="email" class="login-page">
+            
+            <label for="">Password</label class="login-page">
+            <input type="password" name="password_digest" class="login-page">
+            
+            <button class="button">Log in</button>
+        </div>
+        
+        
 
-</form>
+    </form>
 
-<h4>or</h4>
+    <h4>or</h4>
 
-<form action="/sign_up"> 
-    <button>Sign up</button>
-</form>
+    <form action="/sign_up" class="sign-up-form"> 
+        <button class="button">Sign up</button>
+    </form>
+
+</div>
+

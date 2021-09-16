@@ -5,6 +5,19 @@
 
 body {
     background-color: blanchedalmond;
+    /* background-image: url("https://64.media.tumblr.com/d98ca07a487f558c62eab5c97816c28b/tumblr_oxh053sYhu1wbrp3so1_1280.png"); */
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
 }
 
 .page-wrapper {
@@ -13,15 +26,105 @@ body {
     text-align: center;
 }
 
+.fixed-header {
+    position: sticky;
+    top: 0;
+    background-color: blanchedalmond;
+    /* background-image: url("https://64.media.tumblr.com/d98ca07a487f558c62eab5c97816c28b/tumblr_oxh053sYhu1wbrp3so1_1280.png"); */
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.navigation-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+.navigation-bar a {
+    color: black;
+    border: black solid 1px;
+    padding: 5px;
+}
+
+.navigation-bar a:hover {
+    background-color: white;
+}
+
+.user-bar {
+    display: flex;
+    flex-direction: row;
+}
+
+.post-button {
+    border: black solid 1px;
+    padding: 5px;
+}
+
+.post-button:hover {
+    background-color: white;
+}
+
 .individual-post-container {
     border:black solid 2px;
-    background-color: cadetblue;
+    background: rgba(255,255,255,0.5);
     margin: 10px 0;
 }
 
 .individual-post-container img {
     width: 100%;
-    padding: 20px 30px;
+    padding: 20px 100px;
+}
+
+.individual-post-container-detail, .comment-container {
+    border:black solid 2px;
+    background: rgba(255,255,255,0.5);
+    margin: 10px 0;
+}
+
+.individual-post-container-detail img {
+    width: 50%;
+    padding: 20px 100px;
+}
+
+.content-container {
+    border:black solid 2px;
+    background: rgba(255,255,255,0.5);
+    margin: 10px 0;
+    text-align: center;
+}
+
+.links-container {
+    border:black solid 2px;
+    background: rgba(255,255,255,0.5);
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.comment-container {
+    display: grid;
+    justify-content: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.log-in-container {
+    margin: 10px 0;
+    text-align: center;
+    display: inline-block;
+    background: rgba(255,255,255,0.5);
+    padding: 100px;
+}
+
+.sign-up-form {
+    text-align: center;
+    width: 135px;
 }
 
 form { 
@@ -29,14 +132,44 @@ form {
     margin: 0;   
 }
 
-p { 
-    display: table-row;  
+.login-page {
+    display: flex;
 }
 
-label { 
-    display: table-cell; 
+.create-post-form p {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
 }
 
-input { 
-    display: table-cell; 
+.upload-button {
+    justify-content: center;
 }
+
+.create-post-form input, .create-post-form textarea {
+    width: 250px;
+}
+
+.create-post-form, .sign-up-form .edit-post-form{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.edit-post-form input, .edit-post-form textarea {
+    width: 250px;
+}
+
+.button {
+    background-color:whitesmoke;
+}
+
+.button:hover {
+    background-color: white;
+}
+
+.button-container {
+    display: grid;
+    justify-content: center;
+}
+
+

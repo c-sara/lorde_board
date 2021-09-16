@@ -31,3 +31,4 @@ def delete_comment(id)
     return run_sql(sql)
 
 end
+

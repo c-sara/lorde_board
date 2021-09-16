@@ -1,14 +1,38 @@
-<form action="/sign_up" method="post">
-    <label for="">Username</label>
-    <input type="text" name="username">
-    <br>
-    <label for="">Email</label>
-    <input type="email" name="email">
-    <br>
-    <label for="">Password</label>
-    <input type="password" name="password_digest">
-    <br>
+<div class="content-container">
 
-    <button>Sign up</button>
+    <form action="/sign_up" method="post" class="sign-up-form">
+        <p>
+            <label for="">Username</label>
+            <input type="text" name="username">
+        </p>
+        
+        <br>
 
-</form>
+        <p>
+            <label for="">Avatar URL</label>
+            <input type="text" name="avatar_url">
+        </p>
+        
+        <br>
+
+        <p>
+            <label for="">Email</label>
+            <input type="email" name="email">
+        </p>
+        
+        <br>
+
+        <p>
+            <label for="">Password</label>
+            <input type="password" name="password_digest">
+        </p>
+        
+        <br>
+        <p>
+            <button class="button">Sign up</button>
+        </p>
+        
+
+    </form>
+
+</div>

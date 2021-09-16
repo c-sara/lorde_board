@@ -1,6 +1,4 @@
-<% if logged_in? %>
-    <a href="/posts/new">New Post</a>
-<% end %>
+
 
 <% posts.reverse_each do |post| %>
 
@@ -14,11 +12,15 @@
 
         <br>
 
-        <h5> <%= post['post_text'] %> </h5>
+        <% if post['post_text'] != "" %>
+            <h5> <%= post['post_text'] %> </h5>
+        <% end %>
 
         <br>
 
-        <img src="<%= post['image_url'] %>" alt="">
+        <% if post['image_url'] != "" %>
+            <img src="<%= post['image_url'] %>" alt="">
+        <% end %>
 
         <% if edit_video_link(post['video_url']) != "" %>
 
@@ -30,7 +32,10 @@
 
         <div class="posted-by-container">
             <h4>Posted by <%= find_user_by_id(post["user_id"])["username"] %></h4>
-            <h4> <%= find_post_by_id(post["id"])["created_at"] %> </h4>
+            <h4> 
+                <% time = Time.parse(find_post_by_id(post["id"])["created_at"]).strftime("%d %B %Y at %I:%M%P")%> 
+                <%= time %>
+            </h4>
         </div>
 
     </div>
