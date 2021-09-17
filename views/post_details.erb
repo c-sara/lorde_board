@@ -2,22 +2,18 @@
 
     <h2><%= post['title'] %></h2>
 
-    <% if post['image_url'] != "" %>
+    <% if post['post_text'] != "" %>
     <h5> <%= post['post_text'] %> </h5>
     <% end %>
-
-    <br>
 
     <% if post['image_url'] != "" %>
     <img src="<%= post['image_url'] %>" alt="">
     <% end %>
 
-    <br>
-
     <% if edit_video_link(post['video_url']) != "" %>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= edit_video_link(post['video_url']) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <% end %>
-    <br>
+    
      <h4>Posted by <%= find_user_by_id(post["user_id"])["username"] %></h4>
             <h4> 
                 <% time = Time.parse(find_post_by_id(post["id"])["created_at"]).strftime("%d %B %Y at %I:%M%P")%> 
@@ -28,13 +24,13 @@
 
             <form action="/posts/<%= post["id"] %>/edit" method="get">
                 
-                <button>Edit Post</button>
+                <button class="button">Edit Post</button>
             </form>
             
             <form action="/posts/<%= post["id"] %>" method="post">
                 <input type="hidden" name="_method" value="delete">
                 
-                <button>Delete Post</button>
+                <button class="button">Delete Post</button>
             </form>
 
         <% end %>
@@ -47,36 +43,59 @@
 <br>
 
 <div class="comment-container">
-    <div>Comments:</div> 
+    <p>Comments:</p> 
 
     <% comments.each do |comment| %>
 
+        <div class="individual-comment-container">
+
         <% if post["id"] == comment["post_id"] %>
 
-            <h5> <%= find_user_by_id(comment["user_id"])["username"] %>  </h5>
-            <h5> <%= comment["comment"] %> </h5>
-
+            
+            <div><img src="<%= find_user_by_id(comment["user_id"])["avatar_url"] %>" alt="" class="avatar"></div>
+            <span><%= comment["comment"] %> - commented by <%= find_user_by_id(comment["user_id"])["username"] %></span>
+            
+        
+        
         <% end %>
 
         <% if comment['user_id'] == current_user['id']  && post["id"] == comment["post_id"] %>
         
-            <form action="/comments/<%= comment["id"] %>" method="post">
-                <input type="hidden" name="_method" value="delete">
+        
+            <form action="/comments/<%= comment["id"] %>/edit" method="get">
                 
-                <button>Delete</button>
+                <div> <button class="button">Edit</button> </div>
             </form>
 
-            <a href="/comments/<%= comment['id'] %>/edit">Edit</a>
+            <form action="/comments/<%= comment["id"] %>" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input type="hidden" name="post_id" value="<%= comment["post_id"]%>">
+                
+                <div> <button class="button">Delete</button> </div>
+            </form>
+
+        
+
+        <% else %>
+
+            <div></div>
+            <div></div>
 
         <% end %>
+
+        </div>
+        
 
     <% end %>
 
     <form action="/comments/<%= post["id"] %>" method="post">
         <p> 
-            <input type="text" name="comment">
-            <button>Comment</button>
+            <textarea name="comment" style="width:80%">
+            </textarea>
+            
         </p>
+
+        <button class="button">Comment</button>
         
     </form>
 </div>

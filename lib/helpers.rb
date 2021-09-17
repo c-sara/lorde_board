@@ -21,11 +21,6 @@ def current_user
 
   user = find_user_by_id(session[:user_id])
 
-  return user #return has with keys
-    # if user
-    #   return user
-    # else
-    #   return {}
-    # end
+  return user 
 
 end

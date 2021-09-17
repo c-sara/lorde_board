@@ -17,10 +17,9 @@ def edit_video_link(link)
     
 end
 
-# def create_post(title, post_text, image_url, video_url, timestamp, user_id)
 def create_post(title, post_text, image_url, video_url, timestamp, user_id)
 
-    sql = "INSERT INTO posts (title, post_text, image_url, video_url, created_at, user_id) VALUES('#{title}', '#{post_text}', '#{image_url}', '#{video_url}', '#{timestamp}',#{user_id});"
+    sql = "INSERT INTO posts (title, post_text, image_url, video_url, created_at, user_id) VALUES('#{title.gsub("'","''")}', '#{post_text.gsub("'","''")}', '#{image_url}', '#{video_url}', '#{timestamp}',#{user_id});"
 
     return run_sql(sql)
     
@@ -44,7 +43,7 @@ end
 
 def update_post(id, title, post_text, image_url, video_url)
    
-    sql = "UPDATE posts SET title = '#{title}', post_text = '#{post_text}', image_url = '#{image_url}', video_url = '#{video_url}' where id = #{id};"
+    sql = "UPDATE posts SET title = '#{title.gsub("'","''")}', post_text = '#{post_text.gsub("'","''")}', image_url = '#{image_url}', video_url = '#{video_url}' where id = #{id};"
 
     return run_sql(sql)
 

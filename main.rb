@@ -42,7 +42,7 @@ post '/sign_up' do
   
   redirect '/' if logged_in?
 
-  user = create_user(params["username"], params["avatar_url"], params["email"], encrypt_password("#{params['password_digest']}"))
+  user = create_user(params["username"], params["email"], encrypt_password("#{params['password_digest']}"), params["avatar_url"])
   
 
   session[:user_id] = user['id']
@@ -87,7 +87,7 @@ get '/posts/:id' do
   
   post = find_post_by_id(params["id"])
   
-  comments = find_all_comments()
+  comments = find_all_comments(params["id"])
   
   erb :post_details, locals: { post: post, comments: comments }
   
@@ -123,6 +123,11 @@ delete '/posts/:id' do
   
 end
 
+get '/upload-video' do
+  
+  erb :upload_video
+end
+
 post '/comments/:id' do
 
   redirect '/login' if !logged_in?
@@ -141,6 +146,28 @@ get '/comments/:id/edit' do
   
   erb :edit_comment, locals: { comment: comment }
 
+end
+
+put '/comments/:id' do
+  
+  redirect '/login' if !logged_in?
+  
+  update_comment(params[:comment], params[:id])
+
+  puts params["comment"]
+  
+  redirect "/posts/#{params["post_id"]}"
+  
+end
+
+delete '/comments/:id' do
+  
+  redirect '/login' if !logged_in?
+  
+  delete_comment( params[:id] )
+  
+  redirect "/posts/#{params["post_id"]}"
+  
 end
 
 post '/session' do

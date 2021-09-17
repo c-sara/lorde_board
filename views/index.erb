@@ -10,13 +10,10 @@
             </a>
         </h2>
 
-        <br>
 
         <% if post['post_text'] != "" %>
             <h5> <%= post['post_text'] %> </h5>
         <% end %>
-
-        <br>
 
         <% if post['image_url'] != "" %>
             <img src="<%= post['image_url'] %>" alt="">
