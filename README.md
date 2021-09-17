@@ -5,6 +5,8 @@
 
 Access via: https://lorde-board.herokuapp.com/login 
 
+![lorde-forum-screenshot](/resources/lorde-forum-screenshot.png "Lorde Forum Screenshot")
+
 ## Features
 This is a full-stack application celebrating the artist, Lorde. 
 
