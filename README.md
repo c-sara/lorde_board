@@ -3,7 +3,7 @@
 ## The Lorde Board
 ### Accessing the site
 
-[Fill in at later stage]
+Access via: https://lorde-board.herokuapp.com/login 
 
 ## Features
 This is a full-stack application celebrating the artist, Lorde. 
@@ -42,14 +42,18 @@ Before making a start on the project, I had drafted up a plan and wireframe.
 
 The theme came easily as Lorde's third album was released recently. She has been my top artist on Spotify since 2017 and I thought it would be fun to incoporate her as the main theme of this project.
 
-### During the project
-
-## Installation Instructions
+### Lessons learnt
+Keep on testing bugs throughout the project. I left some testing to the end as I had assumed it was running fine. 
 
 ## Unsolved Problems
+There were time contraints with my project, I would like to incorporate the following when I get the chance:
+* If the title is left blank in a new post, there will be an issue accessing it on the home page. 
+    * Solution: Add in an if statement to ensure a user will not be able to create/update a post without it.
+* The user will be able to update details in their account
 
 ## Sources
-Images
+Images/resources
 * https://lordegallery.tumblr.com/ 
+* https://www.reddit.com/r/lorde/
 
 

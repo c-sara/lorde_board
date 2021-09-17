@@ -99,7 +99,7 @@ a {
 }
 
 .individual-post-container-detail img {
-    width: 50%;
+    width: 70%;
     padding: 20px 100px;
 }
 
@@ -147,6 +147,10 @@ a {
 
 ul {
     list-style-type: none;
+}
+
+.upload-video-container img {
+    width: 70%;
 }
 
 .log-in-container {
