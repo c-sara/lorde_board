@@ -8,7 +8,7 @@ require_relative 'lib/helpers.rb'
 
 require_relative 'models/post.rb'
 require_relative 'models/user.rb'
-require_relative 'models/comments.rb'
+require_relative 'models/comment.rb'
 
 enable :sessions
 
@@ -107,7 +107,7 @@ put '/posts/:id' do
   
   redirect '/login' if !logged_in?
   
-  update_post(params[:id], params[:title], params[:post_text], params[:image_url], params[:video_url])
+  update_post(params[:title], params[:post_text], params[:image_url], params[:video_url], params[:id])
   
   redirect "/posts/#{params["id"]}"
   

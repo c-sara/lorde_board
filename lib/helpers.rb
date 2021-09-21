@@ -1,6 +1,6 @@
-def run_sql(sql)
+def run_sql(sql, user_inputs = [])
   db = PG.connect(ENV['DATABASE_URL'] || {dbname: 'lorde_forum'})
-  results = db.exec(sql)
+  results = db.exec_params(sql, user_inputs)
   db.close
   return results
 end
@@ -24,3 +24,4 @@ def current_user
   return user 
 
 end
+
