@@ -5,7 +5,8 @@
 
 Access via: https://lorde-board.herokuapp.com/login 
 
-To try the site, create a new account or login with the details below:
+### Trying the site
+Create a new account or login with the details below:
 
 Email: guest@guest.com
 
