@@ -7,6 +7,10 @@ Access via: https://lorde-board.herokuapp.com/login
 
 ![lorde-forum-screenshot](/resources/lorde-forum-screenshot.png "Lorde Forum Screenshot")
 
+To try the site, create a new account or login with the details below:
+Email: guest@guest.com
+Password: 123
+
 ## Features
 This is a full-stack application celebrating the artist, Lorde. 
 
